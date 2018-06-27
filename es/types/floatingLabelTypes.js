@@ -5,5 +5,5 @@ export default {
   floatingLabelFocusStyle: object,
   floatingLabelStyle: object,
   isFocused: bool,
-  shrink: bool,
+  shrink: bool
 };

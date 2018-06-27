@@ -5,8 +5,8 @@ import UnCheckedIcon from 'material-ui/svg-icons/toggle/check-box-outline-blank'
 
 export default {
   anchorOrigin: { vertical: 'top', horizontal: 'left' },
-  autocompleteFilter: function autocompleteFilter (searchText, text) {
-    if (!text || (typeof text !== 'string' && typeof text !== 'number')) return false;
+  autocompleteFilter: function autocompleteFilter(searchText, text) {
+    if (!text || typeof text !== 'string' && typeof text !== 'number') return false;
     if (typeof searchText !== 'string' && typeof searchText !== 'number') return false;
     return (text + '').toLowerCase().includes(searchText.toLowerCase());
   },
@@ -24,26 +24,22 @@ export default {
   nb2show: 5,
   noMatchFound: 'No match found',
   noMatchFoundStyle: {},
-  onAutoCompleteTyping: function onAutoCompleteTyping () {},
-  onChange: function onChange () {},
-  onMenuOpen: function onMenuOpen () {},
-  onSelect: function onSelect () {},
+  onAutoCompleteTyping: function onAutoCompleteTyping() {},
+  onChange: function onChange() {},
+  onMenuOpen: function onMenuOpen() {},
+  onSelect: function onSelect() {},
   openImmediately: false,
   popoverClassName: '',
   popoverWidth: 180,
-  resetButton: React.createElement(FlatButton, {
-    label: 'reset',
-    hoverColor: 'rgba(69, 90, 100, 0.1)',
-    fullWidth: true,
-  }),
+  resetButton: React.createElement(FlatButton, { label: 'reset', hoverColor: 'rgba(69, 90, 100, 0.1)', fullWidth: true }),
   selectAllButton: React.createElement(FlatButton, {
     label: 'select all',
     hoverColor: 'rgba(69, 90, 100, 0.1)',
     labelStyle: { whiteSpace: 'nowrap' },
-    fullWidth: true,
+    fullWidth: true
   }),
   showAutocompleteThreshold: 10,
   unCheckedIcon: React.createElement(UnCheckedIcon, { style: { top: 'calc(50% - 12px)' } }),
   value: null,
-  withResetSelectAllButtons: false,
+  withResetSelectAllButtons: false
 };

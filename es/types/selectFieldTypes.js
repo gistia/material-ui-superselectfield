@@ -1,13 +1,4 @@
-const _typeof =
-  typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
-    ? function (obj) {
-      return typeof obj;
-    }
-    : function (obj) {
-      return obj && typeof Symbol === 'function' && obj.constructor === Symbol && obj !== Symbol.prototype
-        ? 'symbol'
-        : typeof obj;
-    };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 import { shape, arrayOf, func, oneOf, oneOfType, any, node, object, string, number, bool } from 'prop-types';
 import { checkFormat } from '../utils';
@@ -15,7 +6,7 @@ import { checkFormat } from '../utils';
 export default {
   anchorOrigin: shape({
     vertical: oneOf(['top', 'bottom']),
-    horizontal: oneOf(['left', 'right']),
+    horizontal: oneOf(['left', 'right'])
   }),
   autocompleteFilter: func,
   autocompleteStyle: object,
@@ -28,111 +19,61 @@ export default {
   // an html element with a required 'value' property, and optional label prop,
   // an optgroup with valid children (same as bove case),
   // an array of either valid chidlren, or of optgroups hosting valid children
-  children: oneOfType([
-    shape({
-      value: any.isRequired,
-      label: string,
-    }),
-    function (props, propName, componentName, location, propFullName) {
-      const pp = props[propName];
-      if (pp.type === 'optgroup' && pp.props.children) {
-        if (Array.isArray(pp.props.children)) {
-          for (
-            var _iterator = pp.props.children,
-              _isArray = Array.isArray(_iterator),
-              _i = 0,
-              _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();
-            ;
+  children: oneOfType([shape({
+    value: any.isRequired,
+    label: string
+  }), function (props, propName, componentName, location, propFullName) {
+    var pp = props[propName];
+    if (pp.type === 'optgroup' && pp.props.children) {
+      if (Array.isArray(pp.props.children)) {
+        for (var _iterator = pp.props.children, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+          var _ref;
 
-          ) {
-            var _ref;
-
-            if (_isArray) {
-              if (_i >= _iterator.length) break;
-              _ref = _iterator[_i++];
-            } else {
-              _i = _iterator.next();
-              if (_i.done) break;
-              _ref = _i.value;
-            }
-
-            const child = _ref;
-
-            if (!child.props.value) {
-              return new Error(
-                "\n              Missing required property 'value' for '" +
-                  propFullName +
-                  "' supplied to '" +
-                  componentName +
-                  ' ' +
-                  props.name +
-                  "'."
-              );
-            }
-          }
-        } else if (_typeof(pp.props.children) === 'object' && !pp.props.children.props.value) {
-          return new Error(
-            "\n          Missing required property 'value' for '" +
-              propFullName +
-              "' supplied to '" +
-              componentName +
-              ' ' +
-              props.name +
-              "'."
-          );
-        }
-      }
-    },
-    arrayOf(function (props, propName, componentName, location, propFullName) {
-      if (props[propName].type !== 'optgroup') {
-        if (!props[propName].props.value) {
-          return new Error(
-            "\n          Missing required property 'value' for '" +
-              propFullName +
-              "' supplied to '" +
-              componentName +
-              ' ' +
-              props.name +
-              "'."
-          );
-        }
-      } else {
-        for (
-          var _iterator2 = props[propName].props.children,
-            _isArray2 = Array.isArray(_iterator2),
-            _i2 = 0,
-            _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();
-          ;
-
-        ) {
-          var _ref2;
-
-          if (_isArray2) {
-            if (_i2 >= _iterator2.length) break;
-            _ref2 = _iterator2[_i2++];
+          if (_isArray) {
+            if (_i >= _iterator.length) break;
+            _ref = _iterator[_i++];
           } else {
-            _i2 = _iterator2.next();
-            if (_i2.done) break;
-            _ref2 = _i2.value;
+            _i = _iterator.next();
+            if (_i.done) break;
+            _ref = _i.value;
           }
 
-          const child = _ref2;
+          var child = _ref;
 
           if (!child.props.value) {
-            return new Error(
-              "\n            Missing required property 'value' for '" +
-                propFullName +
-                "' supplied to '" +
-                componentName +
-                ' ' +
-                props.name +
-                "'."
-            );
+            return new Error('\n              Missing required property \'value\' for \'' + propFullName + '\' supplied to \'' + componentName + ' ' + props.name + '\'.');
           }
         }
+      } else if (_typeof(pp.props.children) === 'object' && !pp.props.children.props.value) {
+        return new Error('\n          Missing required property \'value\' for \'' + propFullName + '\' supplied to \'' + componentName + ' ' + props.name + '\'.');
       }
-    }),
-  ]),
+    }
+  }, arrayOf(function (props, propName, componentName, location, propFullName) {
+    if (props[propName].type !== 'optgroup') {
+      if (!props[propName].props.value) {
+        return new Error('\n          Missing required property \'value\' for \'' + propFullName + '\' supplied to \'' + componentName + ' ' + props.name + '\'.');
+      }
+    } else {
+      for (var _iterator2 = props[propName].props.children, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+        var _ref2;
+
+        if (_isArray2) {
+          if (_i2 >= _iterator2.length) break;
+          _ref2 = _iterator2[_i2++];
+        } else {
+          _i2 = _iterator2.next();
+          if (_i2.done) break;
+          _ref2 = _i2.value;
+        }
+
+        var child = _ref2;
+
+        if (!child.props.value) {
+          return new Error('\n            Missing required property \'value\' for \'' + propFullName + '\' supplied to \'' + componentName + ' ' + props.name + '\'.');
+        }
+      }
+    }
+  })]),
   disabled: bool,
   elementHeight: oneOfType([number, arrayOf(number)]),
   floatingLabel: oneOfType([string, node]),
@@ -166,41 +107,22 @@ export default {
   unCheckedIcon: node,
   underlineFocusStyle: object,
   underlineStyle: object,
-  value: function value (props, propName, componentName, location, propFullName) {
-    let multiple = props.multiple,
-      value = props.value;
+  value: function value(props, propName, componentName, location, propFullName) {
+    var multiple = props.multiple,
+        value = props.value;
 
     if (multiple) {
       if (!Array.isArray(value)) {
-        return new Error(
-          "\n          When using 'multiple' mode, 'value' of '" +
-            componentName +
-            ' ' +
-            props.name +
-            "' must be an array."
-        );
+        return new Error('\n          When using \'multiple\' mode, \'value\' of \'' + componentName + ' ' + props.name + '\' must be an array.');
       } else {
-        const index = checkFormat(value);
+        var index = checkFormat(value);
         if (index !== -1) {
-          return new Error(
-            "\n            'value[" +
-              index +
-              "]' of '" +
-              componentName +
-              ' ' +
-              props.name +
-              "' must include a 'value' property."
-          );
+          return new Error('\n            \'value[' + index + ']\' of \'' + componentName + ' ' + props.name + '\' must include a \'value\' property.');
         }
       }
-    } else if (
-      value !== null &&
-      ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== 'object' || !('value' in value))
-    ) {
-      return new Error(
-        "\n        'value' of '" + componentName + ' ' + props.name + "' must include a 'value' property."
-      );
+    } else if (value !== null && ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== 'object' || !('value' in value))) {
+      return new Error('\n        \'value\' of \'' + componentName + ' ' + props.name + '\' must include a \'value\' property.');
     }
   },
-  withResetSelectAllButtons: bool,
+  withResetSelectAllButtons: bool
 };

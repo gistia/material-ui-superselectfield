@@ -6,5 +6,5 @@ export default {
   errorText: string,
   hintText: string,
   selectionsRenderer: func,
-  underlineErrorStyle: object,
+  underlineErrorStyle: object
 };
