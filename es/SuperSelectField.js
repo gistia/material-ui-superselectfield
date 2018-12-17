@@ -312,6 +312,7 @@ var SelectField = (_temp = _class = function (_Component) {
         onClick: this.handleClick,
         onFocus: this.onFocus,
         onKeyDown: this.handleKeyDown,
+        className: this.props.className,
         style: _extends({
           cursor: disabled ? 'not-allowed' : 'pointer',
           color: disabled ? palette.disabledColor : palette.textColor,

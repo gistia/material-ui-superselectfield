@@ -392,6 +392,7 @@ class SelectField extends Component {
         onClick={this.handleClick}
         onFocus={this.onFocus}
         onKeyDown={this.handleKeyDown}
+        className={this.props.className}
         style={{
           cursor: disabled ? 'not-allowed' : 'pointer',
           color: disabled ? palette.disabledColor : palette.textColor,
